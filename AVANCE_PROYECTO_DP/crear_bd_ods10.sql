@@ -1,28 +1,25 @@
--- Crear base de datos
-CREATE DATABASE IF NOT EXISTS ods10_db;
+-- Base de datos: ods10_db
 
--- Usar la base de datos
-USE ods10_db;
-
--- Crear tabla necesidades
+-- Tabla: necesidades (registro de usuarios)
 CREATE TABLE IF NOT EXISTS necesidades (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_persona VARCHAR(100) NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
     apellidos VARCHAR(100) NOT NULL,
-    grupo_vulnerable VARCHAR(50) NOT NULL,
-    descripcion TEXT NOT NULL,
-    fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP
+    telefono VARCHAR(20),
+    direccion VARCHAR(200),
+    grupo VARCHAR(50),
+    descripcion TEXT,
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Crear tabla necesidades
-CREATE TABLE IF NOT EXISTS necesidades (
+-- Tabla: recursos (recursos y ayudas)
+CREATE TABLE IF NOT EXISTS recursos (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    usuario_id INT,
-    nombre_persona VARCHAR(100) NOT NULL,
-    apellidos VARCHAR(100) NOT NULL,
-    grupo_vulnerable VARCHAR(50) NOT NULL,
-    descripcion TEXT NOT NULL,
-    fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
-        ON DELETE SET NULL
+    tipo_donacion VARCHAR(100),
+    nombre_ayudante VARCHAR(100),
+    telefono_ayudante VARCHAR(20),
+    direccion_entrega VARCHAR(200),
+    descripcion TEXT,
+    cantidad INT,
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
